@@ -1,0 +1,397 @@
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>A Free/Open-Source Morphological Transducer for Western Armenian</title>
+
+		<meta name="description" content="A Free/Open-Source Morphological Transducer for Western Armenian">
+		<meta name="author" content="Hovsep Dolatian and Daniel Swanson and Jonathan N. Washington">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- , maximum-scale=1.0, user-scalable=no" -->
+
+		<link rel="stylesheet" href="./reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="./reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="./reveal.js/dist/theme/beige.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="./reveal.js/plugin/highlight/monokai.css" id="highlight-theme">
+		<!-- link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css" -->
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? './reveal.js/css/print/pdf.scss' : './reveal.js/css/print/paper.scss';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="jnw-overrides.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+
+				<section id="title" data-state="no-toc-progress">
+					<style>.header1 header:after { content: "Header 1 Example"; }</style>
+					<h1><div style="margin-bottom: 0.5em !important ;">A Free/Open-Source Morphological Transducer for Western Armenian</div></h1>
+					<div style="padding-top:0in; padding-bottom: 0.25in;">
+						<!-- h3 -->
+						<div style="width: 100%; padding-bottom: 0.25in;">
+							<div style="width: 32%; float: left;">
+								<img style="width: 5.5em; height: 5.5em;" src="img/pic_HD.jpg"/><br />
+								Hovsep Dolatian¹
+							</div>
+						<!-- /h3-->
+							<div style="width: 32%; float: left;">
+								<img style="width: 5.5em; height: 5.5em;" src="img/pic_DS.jpg"/><br />
+								Daniel Swanson²
+							</div>
+							<div style="width: 32%; float: left;">
+								<img style="width: 5.5em; height: 5.5em;" src="img/pic_JNW.jpg"/><br />
+								Jonathan&nbsp;N.&nbsp;Washington³
+							</div>
+							<div style="clear: both"></div>
+						</div>
+						<ol class="shrink">
+							<li>(affiliation), USA</li>
+							<li>Indiana University, USA</li>
+							<li>Swarthmore College, USA</li>
+						</ol>
+					</div>
+						<img class="noframe" src="img/affiliation" style="height: 5em;"/>
+						<img class="noframe" src="img/swarthmorelogowhite.svg" style="height: 5em;"/>
+						<img class="noframe" src="img/iu_trident_web_crimson.svg" style="height: 5em;"/>
+						<img class="noframe" src="img/Apertium_logo_lightbg.svg" style="height: 5em;"/>
+				</section>
+
+
+				<section>
+					<h2>Overview</h2>
+					<div class="float-left">
+					<div class="box">
+						<p class="bbb">Our talk in a nutshell</p>
+						<p>We developed a prototype <span class="highlight">free/open source</span> morphological transducer for <span class="highlight"/>Western Armenian</span></p>
+						<!-- ul -->
+							<!-- li>Turkic non-finite verb forms often argued to be multifunctional</li -->
+							<!-- li>Commonly assumed multifunctionality of Turkic non-finite verb forms does not hold</li>
+							<ul>
+								<li>Conflates important distinctions</li>
+								<li>Too few categories</li>
+							</ul>
+							<li>Proposal for novel delineation</li>
+						</ul -->
+					</div>
+					</div>
+					<div class="float-right"><!--  style="margin-top: 1em;" --> <!-- #padding-top: 10pt     | to make the top vertically align with the other box -->
+					<div class="box">
+					<p class="bbb">The next 5 minutes:</p>
+					<ul>
+						<li>Background</li>
+						<ul>
+							<li>Western Armenian</li>
+							<li>Morphological tranducers</li>
+						</ul>
+						<li>Implementation and Challenges</li>
+						<li>Evaluation</li>
+						<li>Future work</li>
+						<li>Conclusion</li>
+					</ul>
+					</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>Background</h2>
+					<h3>Western Armenian</h3>
+					<!-- <img src="img/Sakha.png" style="height: 10em;"><br /> -->
+					<ul>
+						<li>IE language</li>
+						<li>~n speakers</li>
+						<li>Spoken primarily in diaspora</li>
+						<li>Status</li>
+            <li>Morphological typology</li>
+					</ul>
+				</section>
+
+
+				<section data-background="img/map.svg" data-background-position="left center" data-background-size="contain">
+					<div style="background-color: rgba(0.3, 0.3, 0.3, 0.4); transparency 50%; position: absolute; top: 0px; right: -7em; margin: 0 0 0 0; padding: 0.5em 0.5em 0.5em 0; color: black">
+						<p>Might not need the map</p>
+						<ul style="list-style-type: none;   text-shadow: 2px 2px 8px #FFFFFF;">
+							<li>List:</li>
+							<ul>
+								<li><span class="code">hye</span> - Eastern Armenian</li>
+								<li><span class="code"><b class="highlight-cyan" style="text-shadow: 2px 2px 8px #000000;">hyw</b></span> - <b class="highlight-cyan" style="text-shadow: 2px 2px 8px #000000;">Western Armenian</b></li>
+							</ul>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h2>Background</h2>
+					<h3>Morphological tranducers</h3>
+					<ul>
+						<li>Twofold function: morphological analysis and generation<br />
+						<span class="code">атын ↔ ат<tag>n</tag><tag>px3sg</tag><tag>acc</tag>/атын<tag>adj</tag></span>
+
+							<br>UPDATE and delete this line
+						</li>
+						<li>Implemented as finite state transducers (FST)</li>
+						<li>Compiled from <span class="highlight">hand-coded</span> lexical, morphotactic, and morphophonological generalisations</li>
+						<li>Only one development cycle</li>
+						<li><span class="highlight">many uses</span> in language technology and ``downstream'' tasks:</li>
+						<ul>
+							<li>can be repurposed as spell checkers</li>
+							<li>may be used in rule-based machine translation pipelines</li>
+						</ul>
+						<li>Some <span class="highlight">current uses</span> of this transducer</li>
+						<ul>
+							  <li>?</li>
+						</ul>
+					</ul>
+				</section>
+
+        <section>
+            <h2>Existing transducers for comparison</h2>
+            <h3>Comparison of lexicon size</h3>
+				<div>hyw: &gt;999 999 stems</div>
+        </section>
+
+			<section>
+            <h2>Implementation and Challenges</h2>
+				<h3>Two-level approach using <tt>lexd</tt>+HFST</h3>
+UPDATE example and delete this line<br>
+				<div class="box" style="width: 50%">
+					<h4>orthographic form</h4>
+					<span class="code">дьиэлэрбиттэн</span>
+				</div>
+				<p>↕ (<code>twol</code>: phonological mappings)</p>
+				<div class="box" style="width: 50%">
+					<h4>morphological/lexical form</h4>
+					<span class="code">дьиэ&gt;<arch>L</arch><arch>A</arch>р&gt;<arch>B</arch><arch>I</arch>&gt;тт<arch>A</arch>н</span>
+				</div>
+				<p>↕ (<code>lexc</code>: lexicon + morphotactics)</p>
+				<div class="box" style="width: 50%">
+					<h4>analysis: <span class="highlight">lemma, POS, grammatical tags</span></h4>
+					<span class="code">дьиэ<tag>n</tag><tag>pl</tag><tag>px1sg</tag><tag>abl</tag></span>
+				</div>
+			
+			</section>
+
+        <section>
+            <h2>Implementation and Challenges</h2>
+				<h3>EXAMPLE challenge</h3>
+				<div class="box">
+					<h3>Problem:</h3>
+					<ul>
+						<li>hargle bargle</li>
+					</ul>
+				</div>
+				<div class="box">
+					<h3>Solution:</h3>
+					<ul>
+						<li>foobar</li>
+					</ul>
+				</div>
+				<aside class="notes">
+				<p class="shrink">What to read, in presenter notes</p>
+				</aside>
+			</section>
+
+			<section>
+				<h2>Evaluation</h2>
+				<h3>Coverage</h3>
+				<div class="float-left">
+				<div class="box">
+					<ul>
+						<li><span class="highlight">Naïve coverage</span>: <em>the number of forms in a corpus that receive an analysis, regardless of whether or not the analysis is correct (e.g., in context)</em></li>
+					</ul>
+				</div>
+				</div>
+				<div class="float-right" style="margin-top: 1em">
+            <table>
+                <tr>
+                    <th>Corpus</th>
+                    <th>Tokens</th>
+                    <th>Coverage</th>
+                </tr>
+                <tr>
+                    <td>Newspapers</td>
+                    <td class="raln">~16M</td>
+                    <td class="raln">87.68%</td>
+                </tr>
+                <tr>
+                    <td>Wikipedia</td>
+                    <td class="raln">~2.59M</td>
+                    <td class="raln">88.79%</td>
+                </tr>
+					 <tr>
+					 	<td>New&nbsp;Testament</td>
+						<td class="raln">~190K</td>
+						<td class="raln">90.87%</td>
+					</tr>
+            </table>
+				<p class="shrink">Adequate coverage: robust morphology, but many missing stems</p>
+				</div>
+        </section>
+
+        <section>
+            <h2>Evaluation</h2>
+            <h3>Precision & Recall</h3>
+				<div>
+				<ul>
+					<li>created gold standard:</li>
+	            <ul>
+	                <li>1000 valid words of Western Armenian</li>
+						 <li>randomly selected from WHICH corpus</li>
+						 <li>manually annotated output of transducer</li>
+	            </ul>
+				</ul>
+				</div>
+				<div class="float-left">
+				<div class="box">
+					<ul>
+						<li><span class="highlight">precision</span>: <em>percentage of analyses returned by the transducer that is correct</em></li>
+						<li><span class="highlight">recall</span>: <em>percentage of the correct analyses that is returned</em></li>
+					</ul>
+				</div>
+				</div>
+				<div class="float-right">
+				<div>results:</div>
+            <table>
+                <tr>
+                    <th>Corpus</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                </tr>
+                <tr>
+                    <td>CORPUSNAME</td>
+                    <td class="raln">99.9%</td>
+                    <td class="raln">69.9%</td>
+                </tr>
+            </table>
+				<p class="shrink">i.e., nearly every form returned by the transducer was deemed correct, but many correct analyses were not returned by the transducer (mostly due to low coverage)</p>
+				</div>
+        </section>
+
+			<section>
+				<h2>Future work</h2>
+				<ul>
+					<li>Expand <span class="highlight">lexicon</span> (add more lemmas)</li>
+					<li>Morphological/syntactic <span class="highlight">disambiguation</span></li>
+					<li>Simple MT between different varieties of Armenian</li>
+					<li>More language technology applications of transducer? (spell checkers, MT, etc.?)</li>
+				</ul>
+			</section>
+
+				<section>
+					<h2>Conclusion</h2>
+					<ul>
+						<li>Robust transducer</li>
+						<ul>
+							<li>high coverage</li>
+							<li>high precision</li>
+							<li>moderate recall</li>
+						</ul>
+						<li>Lots of room for improvement!</li>
+						<li>Ready for use in language technology applications, downstream tasks</li>
+					</ul>
+					<div class="box fragment">
+						<p class="bbb"><span class="cyrillic">("Thank you" in hyw)</span>! / Thank you!</p>
+						<ul>
+							<li>Fork at <a href="https://github.com/apertium/apertium-hyx">github.com/apertium/apertium-hyx</a></li>
+							<li>Try out at <a href="https://beta.apertium.org/#analysis?aLang=hyx_hyw">beta.apertium.org</a></li>
+						</ul>
+					</div>
+				</section>
+
+			</div>
+		</div>
+
+		<!-- script src="./reveal.js/lib/js/head.min.js"></script -->
+		<script src="./reveal.js/dist/reveal.js"></script>
+		<script src="./reveal.js/plugin/notes/notes.js"></script>
+		<script src="./reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="./reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="./reveal.js/plugin/zoom/zoom.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				history: true,
+				hash: true,
+
+				// The "normal" size of the presentation, aspect ratio will be preserved
+				// when the presentation is scaled to fit different resolutions. Can be
+				// specified using percentage units.
+				width: 1280, //960,
+				//height: 720, //700,
+				height: 1024,
+				//width: 960,
+				//height: 700,
+
+				// Factor of the display size that should remain empty around the content
+				margin: 0.1,
+
+				// Bounds for smallest/largest possible scale to apply to content
+				minScale: 0.2,
+				maxScale: 1.0,
+
+				//theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				// transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Shows the slide number using default formatting
+				//Reveal.configure({ slideNumber: true });
+				//slideNumber: true,
+
+				//if true (default), fragments are generated on separate pages of pdfs
+				//pdfSeparateFragments: false,
+
+				// Slide number formatting can be configured using these variables:
+				//  "h.v":  horizontal . vertical slide number (default)
+				//  "h/v":  horizontal / vertical slide number
+				//    "c":  flattened slide number
+				//  "c/t":  flattened slide number / total slides
+				//Reveal.configure({ slideNumber: 'c' });
+				slideNumber: 'c',
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional reveal.js plugins
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				/***
+				dependencies: [
+					{ src: './reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: './reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: './reveal.js/plugin/highlight/highlight.js' },
+					{ src: './reveal.js/plugin/search/search.js', async: true },
+					{ src: './reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: './reveal.js/plugin/notes/notes.js', async: true }
+				]
+				***/
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealZoom, RevealHighlight, RevealNotes ]
+			});
+
+		</script>
+
+	</body>
+</html>
