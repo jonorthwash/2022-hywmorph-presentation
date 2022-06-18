@@ -169,11 +169,12 @@
 							<li>can be repurposed as spell checkers</li>
 							<li>may be used in rule-based machine translation pipelines</li>
 						</ul>
-						<li>Some <span class="highlight">current uses</span> of this transducer</li>
+						<li>Some <span class="highlight">current uses</span> of this transducer:</li>
 						<ul>
-							  <li>Virtually-complete morphology helps find synchronic variation, and </li>
-							  <li>Useful when writing a reference grammar</li>
-							  <li>Looking into pedagogical uses</li>
+							<li>Verb paradigm generator <span class="small">(<a href="https://apertium.github.io/apertium-paradigmatrix/">apertium.github.io/apertium-paradigmatrix</a>)</span></li>
+							<li>Virtually-complete morphology helps find synchronic variation, and </li>
+							<li>Useful when writing a reference grammar</li>
+							<li>Looking into pedagogical uses</li>
 						</ul>
 					</ul>
 				</section>
@@ -324,7 +325,7 @@
 				<ul>
 					<li>created gold standard:</li>
 	            <ul>
-	                <li>1000 valid words of Western Armenian</li>
+	                <li>1225 valid words of Western Armenian</li>
 						 <li>randomly selected from WHICH corpus</li>
 						 <li>manually annotated output of transducer</li>
 	            </ul>
@@ -332,9 +333,9 @@
 				</div>
 				<div class="float-left">
 				<div class="box">
-					<ul>
-						<li><span class="highlight">precision</span>: <em>percentage of analyses returned by the transducer that is correct</em></li>
-						<li><span class="highlight">recall</span>: <em>percentage of the correct analyses that is returned</em></li>
+					<ul class="nobullet">
+						<li style="margin-bottom: 1em;"><span class="highlight">precision</span>: <em>how many of the transducer-provided analyses for the tokens were correct<!-- percentage of analyses returned by the transducer that is correct --></em></li>
+						<li><span class="highlight">recall</span>: <em>how many of the correct analyses were retrieved from the transducer<!-- percentage of the correct analyses that is returned --></em></li>
 					</ul>
 				</div>
 				</div>
@@ -342,17 +343,17 @@
 				<div>results:</div>
             <table>
                 <tr>
-                    <th>Corpus</th>
+                    <th>Tokens</th>
                     <th>Precision</th>
                     <th>Recall</th>
                 </tr>
                 <tr>
-                    <td>CORPUSNAME</td>
-                    <td class="raln">99.9%</td>
-                    <td class="raln">69.9%</td>
+                    <td>1225</td>
+                    <td class="raln">90.58%</td>
+                    <td class="raln">74.82%</td>
                 </tr>
             </table>
-				<p class="shrink">i.e., nearly every form returned by the transducer was deemed correct, but many correct analyses were not returned by the transducer (mostly due to low coverage)</p>
+				<p class="shrink">i.e., most forms returned by the transducer were deemed correct, but many correct analyses were not returned by the transducer (mostly due to low coverage)</p>
 				</div>
         </section>
 
@@ -361,9 +362,11 @@
 				<ul>
 					<li>Expand <span class="highlight">lexicon</span> (add more lemmas)</li>
 					<li>Morphological/syntactic <span class="highlight">disambiguation</span></li>
-					<li>Simple MT between different varieties of Armenian</li>
 					<li>More language technology applications of transducer? (spell checkers, MT, etc.?)</li>
-					<li>**Slowly** working on incorporating Eastern morphology so that the analyzer is bi-dialectal </li> 
+					<li><em>Slowly</em> working on incorporating Eastern morphology so that the analyzer is <span class="highlight">bi-dialectal</span></li> 
+					<ul class="nobullet">
+						<li class="arrow">Simple MT between different varieties of Armenian</li>
+					</ul>
 					<li> Honestly, it's open-source, so you can do WHATEVER you want with it! </li> 
 				</ul>
 			</section>
@@ -371,6 +374,7 @@
 				<section>
 					<h2>Conclusion</h2>
 					<ul>
+						<li>Expansion of language technology for Western Armenian</li>
 						<li>Robust transducer</li>
 						<ul>
 							<li>high coverage</li>
@@ -378,7 +382,11 @@
 							<li>moderate recall</li>
 						</ul>
 						<li>Lots of room for improvement!</li>
-						<li>Ready for use in language technology applications, downstream tasks</li>
+						<li>Ready for use in</li>
+						<ul>
+							<li>language technology applications</li>
+							<li>downstream tasks</li>
+						</ul>
 					</ul>
 					<div class="box fragment">
 						<p class="bbb"><span class="cyrillic">Շնորհակա՛լ ենք</span>! / Thank you!</p>
