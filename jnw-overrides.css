@@ -153,8 +153,8 @@ table.shrink tr td {
 
 table.shrink tr th {
 	font-size: 80% !important;
-	padding: -3px;
-	padding-right: 8pt;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
 	vertical-align: bottom ;
 }
 
