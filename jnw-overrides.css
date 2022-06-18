@@ -438,6 +438,10 @@ table.nolines tbody tr:last-child {
 	border-bottom: none;
 }
 
+.addline-top td {
+	border-top: 2px solid black;
+}
+
 .box {
 	border: 2pt solid lightgreen !important ;
 	padding: 10pt !important ;
@@ -592,3 +596,8 @@ blockquote {
 	font-size: 75% !important ;
 }
 
+.center {
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}

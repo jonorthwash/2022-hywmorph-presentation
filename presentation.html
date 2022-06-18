@@ -142,23 +142,15 @@
 					</div>
 				</section>
  -->
-<section>
-					<h2>Background</h2>
-					<h3>Morphological tranducers</h3>
+				<section data-auto-animate>
+					<span data-id="backgroundFSTs"><h2>Background</h2>
+					<h3>Morphological tranducers</h3></span>
 					<ul>
 						<li>Twofold function: morphological analysis and generation<br />
-						
-						
-						<span class="code">սիրեցին ↔ սիրել<tag>v</tag><tag>tv</tag><tag>past</tag><tag>pret</tag><tag>p3</tag><tag>pl</tag><tag>indc</tag></span>
-
-
-<div>  [siɾeʦin]   ↔ [siɾel] </div> 
-
-<div>  `they liked'   ↔ `to like` </div> 
-
-  
- 
- 
+						<div class="center">
+							<span class="code" style="line-height: 1.5 !important;">սիրեցին <span class="highlight">↔</span> սիրել<tag>v</tag><tag>tv</tag><tag>past</tag><tag>pret</tag><tag>p3</tag><tag>pl</tag><tag>indc</tag></span><br />
+							<span class="center small" style="line-height: 1.5 !important;">[siɾeʦin] ‘<em>they liked</em>’ <span class="highlight">↔</span> [siɾel] ‘<em>to like</em>’, verb, intransitive, preterite, 3rd person, plural, indicative</span>
+						</div>
 						</li>
 						<li>Implemented as finite state transducers (FST)</li>
 						<li>Compiled from <span class="highlight">hand-coded</span> lexical, morphotactic, and morphophonological generalisations</li>
@@ -166,13 +158,13 @@
 						
 					</ul>
 				</section>
-				<section>
-					<h2>Background</h2>
-					<h3>Morphological tranducers</h3>
+				<section data-auto-animate>
+					<span data-id="backgroundFSTs"><h2>Background</h2>
+					<h3>Morphological tranducers</h3></span>
 					<ul>
 						<li>Compiled from <span class="highlight">hand-coded</span> lexical, morphotactic, and morphophonological generalisations</li>
 						<li>Only one development cycle</li>
-						<li><span class="highlight">many uses</span> in language technology and ``downstream'' tasks:</li>
+						<li><span class="highlight">many uses</span> in language technology and “downstream” tasks:</li>
 						<ul>
 							<li>can be repurposed as spell checkers</li>
 							<li>may be used in rule-based machine translation pipelines</li>
@@ -186,13 +178,35 @@
 					</ul>
 				</section>
 
-<section> 
-<h2> Number of lemmas</h2> 
-<div style="float: center;">
+				<section> 
+					<h2> Number of lemmas</h2>
+					<div class="float-left">
+					<table class="shrink nolines">
+						<tr><th></th><th>category</th><th>entries</th><th>tag</th></tr>
+						<tr class="addline-top"><th rowspan="4" class="rot90"><div>Core POS</div></th><td>Noun</td><td class="raln">39006</td><td><tag>n</tag></td></tr>
+						<tr><td>Adjective</td><td class="raln">18617</td><td><tag>adj</tag></td></tr>
+						<tr><td>Verb</td><td class="raln">7441</td><td><tag>v</tag></td></tr>
+						<tr><td>Adverb</td><td class="raln">1895</td><td><tag>adv</tag></td></tr>
+						<tr><th rowspan="4" class="rot90"><div>Names</div></th><td>Given name</td><td class="raln">4848</td><td><tag>np</tag><tag>ant</tag></td></tr>
+						<tr><td>Surname</td><td class="raln">2052</td><td><tag>np</tag><tag>cog</tag></td></tr>
+						<tr><td>Location name</td><td class="raln">1183</td><td><tag>np</tag><tag>top</tag></td></tr>
+						<tr><td>Other name</td><td class="raln">22</td><td><tag>np</tag><tag>al</tag></td></tr>
+						<tr><th rowspan="7" class="rot90"><div>Function, other</div></th><td>Pronoun</td><td class="raln">415</td><td><tag>prn</tag></td></tr>
+						<tr><td>Adposition</td><td class="raln">130</td><td><tag>pr</tag>, <tag>post</tag></td></tr>
+						<tr><td>Abbreviation</td><td class="raln">81</td><td><tag>abbr</tag></td></tr>
+						<tr><td>Interjection</td><td class="raln">49</td><td><tag>ij</tag></td></tr>
+						<tr><td>Conjunction</td><td class="raln">48</td><td><tag>conj</tag></td></tr>
+						<tr><td>Numeral</td><td class="raln">41</td><td><tag>num</tag></td></tr>
+						<tr><td>Particle</td><td class="raln">9</td><td><tag>particle</tag></td></tr>
+						<tr class="addline-top"><td></td><th class="laln">Total</th><td class="raln">75837</td><td></td></tr>
+						
+					</table>
+					</div>
+					<!-- div style="float: center;">
 								<img   src="img/lexicon.jpg"/><br />
-							</div>
-							<div> Recognizes/generates over 1 million inflected forms </div> 
-</section> 
+					</div -->
+					<div class="float-right">Recognizes/generates<br/>over <span class="highlight">1 million</span><br/>inflected forms </div>
+				</section> 
      <!-- 
    <section>
             <h2>Existing transducers for comparison</h2>
