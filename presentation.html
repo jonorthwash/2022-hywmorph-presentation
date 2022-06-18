@@ -218,7 +218,31 @@
         </section>
  -->
 
-			<section>
+			   <section>
+            <h2>Implementation and Challenges</h2>
+				<h3>Lexicon compilations   </h3>
+				<div class="box">
+					<h3>Problem:</h3>
+					<ul>
+						<!-- li> For a compound with monosyllabic second stem, need to manually check if the semantics use plural  -եր /-eɾ/ or  -ներ /-neɾ/ </li -->
+						<li>There are many Armenian dictionaries online, but essentially none of them provide data formats (text files) that allow for intensive use </li>
+					 
+					</ul>
+				</div>
+				<div class="box">
+					<h3>Solution: </h3>
+					<ul>
+						<li>Scraped XML files from the Kouyoumdjian dictionary from 
+<a href="nayiri.com/">Nayiri</a> </li> 
+						<li>Extracted a 70K lexicon from the files that we used to populate our analyzer </li> 
+						<li>Unfortunately Nayiri doesn't publicly offer their XML anymore :( </li> 
+						<li>But you can use our extraction from our <a href="https://github.com/apertium/apertium-hyw/tree/master/lexd_components">GitHub</a> :) </li> 
+					</ul>
+				</div>
+				<aside class="notes">
+				<p class="shrink">What to read, in presenter notes</p>
+				</aside>
+			</section><section>
             <h2>Implementation and Challenges</h2>
 				<ul class="nobullet">
 					<li>Two-level approach using <tt>lexd</tt>+HFST:</li>
@@ -263,7 +287,7 @@
 
 						
 						</li> 
-						<li> 
+					<li> 
 												<span class="code">մեծատուններ ↔ մեծատուն<tag>n</tag><tag>pl</tag></span>
 
 											<div class="ipa"> [med͡zɑdun-neɾ]  ↔ [med͡zɑdun] ‘<em>big-housed</em>’</div> 
@@ -283,12 +307,54 @@
 				</aside>
 			</section>
 
+  <section>
+            <h2>Implementation and Challenges</h2>
+				<h3>Infix punctuation  </h3>
+				<div class="box">
+					<h3>Problem:</h3>
+					<ul> <li> Punctuation markers are added onto stressed syllable of the word
+					
+					
+					<table>
+  <tr>
+    <th>Final stress</th>
+    <th>Pre-schwa stress</th>
+    <th>Irregular stress</th>
+  </tr>
+  <tr>
+    <td>կապի՞կ</td>
+    <td>կապի՚կը</td>
+    <td>ո՞րքան</td>
+  </tr>
+  <tr>
+    <td>ɡɑˈbiˀɡ</td>
+    <td>ɡɑˈbiˀɡə</td>
+    <td>ˈvoˀɾkʰɑn</td>
+  </tr>
+  <tr>
+    <td>'monkey?'</td>
+    <td>'the monkey?'</td>
+    <td>'how many?'</td>
+  </tr>
+</table> </li> </ul>
+				</div>
+				<div class="box">
+					<h3>Solution: </h3>
+					<ul>
+						<li>Have rules that add infix at end of word, and then metathesize</li> 
+					</ul>
+				</div>
+				<aside class="notes">
+				<p class="shrink">What to read, in presenter notes</p>
+				</aside>
+			</section>
+			
 			<section>
 				<h2>Evaluation: Coverage</h2>
 				<div class="float-left">
 				<div class="box">
 					<ul>
-						<li><span class="highlight">Naïve coverage</span>: <em>the number of forms in a corpus that receive an analysis, regardless of whether or not the analysis is correct (e.g., in context)</em></li>
+						<li><span class="highlight">Naive coverage</span>: <em>the number of forms in a corpus that receive an analysis, regardless of whether or not the analysis is correct (e.g., in context)</em></li>
 					</ul>
 				</div>
 				</div>
