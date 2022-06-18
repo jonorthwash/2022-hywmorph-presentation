@@ -149,7 +149,7 @@
 						<li>Twofold function: morphological analysis and generation<br />
 						<div class="center">
 							<span class="code" style="line-height: 1.5 !important;">սիրեցին <span class="highlight">↔</span> սիրել<tag>v</tag><tag>tv</tag><tag>past</tag><tag>pret</tag><tag>p3</tag><tag>pl</tag><tag>indc</tag></span><br />
-							<span class="center small" style="line-height: 1.5 !important;">[siɾeʦin] ‘<em>they liked</em>’ <span class="highlight">↔</span> [siɾel] ‘<em>to like</em>’, verb, intransitive, preterite, 3rd person, plural, indicative</span>
+							<span class="center small ipa" style="line-height: 1.5 !important;">[siɾeʦin] ‘<em>they liked</em>’ <span class="highlight">↔</span> [siɾel] ‘<em>to like</em>’, verb, intransitive, preterite, 3rd person, plural, indicative</span>
 						</div>
 						</li>
 						<li>Implemented as finite state transducers (FST)</li>
@@ -198,7 +198,7 @@
 						<tr><td>Conjunction</td><td class="raln">48</td><td><tag>conj</tag></td></tr>
 						<tr><td>Numeral</td><td class="raln">41</td><td><tag>num</tag></td></tr>
 						<tr><td>Particle</td><td class="raln">9</td><td><tag>particle</tag></td></tr>
-						<tr class="addline-top"><td></td><th class="laln">Total</th><td class="raln">75 837</td><td></td></tr>
+						<tr class="addline-top addline-bottom"><td></td><th class="laln">Total</th><td class="raln">75 837</td><td></td></tr>
 						
 					</table>
 					</div>
@@ -217,13 +217,19 @@
 
 			<section>
             <h2>Implementation and Challenges</h2>
-				<h3>Two-level approach using <tt>lexd</tt>+HFST</h3>
-			The lexical form uses diacritics to later pick phonologically-conditioned allomorphs of the plural and definite
+				<ul class="nobullet">
+					<li>Two-level approach using <tt>lexd</tt>+HFST:</li>
+					<ul class="shrink">
+						<li>“diacritics” in lexical form</li>
+						<li>used in morpholophonology to select phonologically-conditioned allomorphs<br/>(e.g., of the plural and definite)</li>
+					</ul>
+				</ul>
+				<!-- The lexical form uses diacritics to later pick phonologically-conditioned allomorphs of the plural and definite -->
 				<div class="box" style="width: 100%">
 					<h4>orthographic form</h4>
-					<span class="code">ձեռքերէն</span> `from the hands` /ʦeɾkʰ-eɾ-e-n/ 
+					<div style="margin-bottom: 0.5em !important;"><span class="code">ձեռքերէն</span></div><span class="ipa small">/ʦeɾkʰ-eɾ-e-n/<br/>‘<em>from the hands</em>’</span>
 				</div>
-				<p>↕ (<code>twol</code>: phonological mappings)</p>
+				<p>↕ (<code class="highlight">twol</code>: phonological mappings)</p>
 				<div class="box" style="width: 100%">
 					<h4>morphological/lexical form</h4>
 					<span class="code">ձեռք&gt;<arch>Ninfl</arch>&gt;<arch>Plն</arch>եր&gt;է&gt;<arch>defն</arch></span>
@@ -243,12 +249,14 @@
 				<div class="box">
 					<h3>Problem:</h3>
 					<ul>
-						<li>For a compound with monosyllabic second stem, need to manually check if the semantics use plural  -եր /-eɾ/ or  -ներ /-neɾ/ </li>
+						<!-- li> For a compound with monosyllabic second stem, need to manually check if the semantics use plural  -եր /-eɾ/ or  -ներ /-neɾ/ </li -->
+						<li>Compound with monosyllabic second stem:<br/>is plural -եր /-eɾ/ or -ներ /-neɾ/?</li>
 						
+						<li>Need to manually code based on semantics</li>
 						<li> 						
 						<span class="code">դրամատուներ ↔ դրամատուն<tag>n</tag><tag>pl</tag></span>
 						
-					<div> [tʰəɾɑmɑdun-eɾ]  ↔ [tʰəɾɑmɑdun] `money-houses` </div> 
+					<div class="ipa">[tʰəɾɑmɑdun-eɾ]  ↔ [tʰəɾɑmɑdun] ‘<em>money-houses</em>’</div> 
 
 
 						
@@ -256,7 +264,7 @@
 						<li> 
 												<span class="code">մեծատուններ ↔ մեծատուն<tag>n</tag><tag>pl</tag></span>
 
-											<div> [med͡zɑdun-eɾ]  ↔ [med͡zɑdun] `big-housed` </div> 
+											<div class="ipa"> [med͡zɑdun-eɾ]  ↔ [med͡zɑdun] ‘<em>big-housed</em>’</div> 
 
 						</li> 
 					</ul>
