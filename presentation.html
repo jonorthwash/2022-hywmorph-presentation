@@ -216,34 +216,8 @@
         </section>
  -->
 
-			   <section>
-            <h2>Implementation and Challenges</h2>
-				<h3>Lexicon compilations   </h3>
-				<div class="box">
-					<h3>Problem:</h3>
-					<ul>
-						<!-- li> For a compound with monosyllabic second stem, need to manually check if the semantics use plural  -եր /-eɾ/ or  -ներ /-neɾ/ </li -->
-						<!-- li>There are many Armenian dictionaries online, but essentially none of them provide data formats (text files) that allow for intensive use </li -->
-						<li>Many online Armenian dictionaries, but data formats don't allow for intensive use</li>
-						<li>Ideal: text files or accessible databases</li>
-					 
-					</ul>
-				</div>
-				<div class="box">
-					<h3>Solution: </h3>
-					<ul>
-						<li>Scraped XML files from the Kouyoumdjian dictionary from 
-<a href="nayiri.com/">Nayiri</a> </li> 
-						<li>Extracted a 70K lexicon that we used to populate our analyser</li>
-						<li>Unfortunately Nayiri doesn't publicly offer their XML anymore :( </li> 
-						<li>But you can use our adaptation of it from our <a href="https://github.com/apertium/apertium-hyw/tree/master/lexd_components">GitHub</a> :) </li> 
-					</ul>
-				</div>
-				<aside class="notes">
-				<p class="shrink">What to read, in presenter notes</p>
-				</aside>
-			</section><section>
-            <h2>Implementation and Challenges</h2>
+<section>
+            <h2>Implementation</h2>
 				<ul class="nobullet">
 					<li>Two-level approach using <tt>lexd</tt>+HFST:</li>
 					<ul class="shrink">
@@ -270,9 +244,35 @@
 			
 			</section>
 
+			   <section>
+            <h2>Challenges: Lexicon compilations</h3>
+				<div class="box">
+					<h3>Problem:</h3>
+					<ul>
+						<!-- li> For a compound with monosyllabic second stem, need to manually check if the semantics use plural  -եր /-eɾ/ or  -ներ /-neɾ/ </li -->
+						<!-- li>There are many Armenian dictionaries online, but essentially none of them provide data formats (text files) that allow for intensive use </li -->
+						<li>Many online Armenian dictionaries, but data formats don't allow for intensive use</li>
+						<li>Ideal: text files or accessible databases</li>
+					 
+					</ul>
+				</div>
+				<div class="box">
+					<h3>Solution: </h3>
+					<ul>
+						<li>Scraped XML files from the Kouyoumdjian dictionary from 
+<a href="nayiri.com/">Nayiri</a> </li> 
+						<li>Extracted a 70K lexicon that we used to populate our analyser</li>
+						<li>Unfortunately Nayiri doesn't publicly offer their XML anymore :( </li> 
+						<li>But you can use our adaptation of it from our <a href="https://github.com/apertium/apertium-hyw/tree/master/lexd_components">GitHub</a> :) </li> 
+					</ul>
+				</div>
+				<aside class="notes">
+				<p class="shrink">What to read, in presenter notes</p>
+				</aside>
+			</section>
+
         <section>
-            <h2>Implementation and Challenges</h2>
-				<h3>Compound plurals </h3>
+            <h2>Challenges: compound plurals </h2>
 				<div class="box">
 					<h3>Problem:</h3>
 					<ul>
@@ -308,8 +308,7 @@
 			</section>
 
   <section>
-            <h2>Implementation and Challenges</h2>
-				<h3>Infix punctuation  </h3>
+            <h2>Challenges: infix punctuation  </h2>
 				<div class="box">
 					<h3>Problem:</h3>
 					<ul> <li> Punctuation markers are added after vowel of stressed syllable of word<br />
